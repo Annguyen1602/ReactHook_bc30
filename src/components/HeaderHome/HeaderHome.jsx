@@ -20,13 +20,13 @@ export default function HeaderHome() {
         <div className="collapse navbar-collapse" id="collapsibleNavId">
           <ul className="navbar-nav me-auto mt-2 mt-lg-0">
             <li className="nav-item active">
-              <NavLink className="nav-link" to="#">
-                Home <span className="visually-hidden">(current)</span>
+              <NavLink className="nav-link" to="/">
+                Home
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="#">
-                Link
+              <NavLink className="nav-link" to="/logindemo">
+                Login
               </NavLink>
             </li>
             <li className="nav-item dropdown">

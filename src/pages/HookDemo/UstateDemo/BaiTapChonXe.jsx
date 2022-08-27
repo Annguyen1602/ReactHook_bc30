@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function BaiTapChonXe() {
-  const [img, setImg] = useState("./img/products/red-car.jp");
+  const [img, setImg] = useState("./img/products/red-car.jpg");
 
   return (
     <div>

@@ -62,6 +62,9 @@ export default function HeaderHome() {
                 <NavLink className="dropdown-item" to="/reduxfacebookapp">
                   FacebookApp
                 </NavLink>
+                {/* <NavLink className="dropdown-item" to="/search">
+                  DemoSearchParams
+                </NavLink> */}
               </div>
             </li>
           </ul>

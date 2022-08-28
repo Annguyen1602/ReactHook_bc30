@@ -17,6 +17,7 @@ import DemoFaceBookApp from "./pages/HookDemo/UseReduxDemo/DemoFaceBookApp/DemoF
 import LoginDemo from "./pages/HookDemo/UseHookRouter/LoginDemo/LoginDemo";
 import Home from "./pages/HookDemo/UseHookRouter/DemoUseParams/Home";
 import Detail from "./pages/HookDemo/UseHookRouter/DemoUseParams/Detail";
+import DemoUseSearchParams from "./pages/HookDemo/UseHookRouter/DemoUseSearchParams/DemoUseSearchParams";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -28,7 +29,7 @@ root.render(
           <Route path="detail">
             <Route path=":id" element={<Detail />}></Route>
           </Route>
-
+          <Route path="search" element={<DemoUseSearchParams />}></Route>
           <Route path="usestate" element={<UseStateDemo />}></Route>
           <Route path="useeffect" element={<UseEffectDemo />}></Route>
           <Route path="usecallback" element={<UseCallBackDemo />}></Route>

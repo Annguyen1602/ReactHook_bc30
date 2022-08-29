@@ -29,11 +29,12 @@ export default function DemoUseSearchParams() {
   };
 
   useEffect(() => {
-    //Khi từ khoá có giá trị thì mới chạy
-
     //Call api
     getProductByKeyword();
   }, [keywordRef.current]);
+
+//DEBOUCE SEARCH
+
 
   const handleChange = (e) => {
     keywordRef.current = e.target.value;

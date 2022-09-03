@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const arrProduct = [
   {
@@ -59,7 +60,26 @@ const arrProduct = [
 ];
 
 export default function Home() {
+  const [arrProduct, setArrProduct] = useState([]);
   const navigate = useNavigate();
+
+  // call api
+  const getAllProductApi = async () => {
+    try {
+      const result = await axios({
+        url: "https://shop.cyberlearn.vn/api/Product",
+        method: "GET",
+      });
+      // sau khi lấy dữ liệu từ api => setState cho arrProduct
+      setArrProduct(result.data.content);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getAllProductApi();
+  }, []);
+
   const renderProduct = () => {
     return arrProduct.map((item, index) => {
       return (

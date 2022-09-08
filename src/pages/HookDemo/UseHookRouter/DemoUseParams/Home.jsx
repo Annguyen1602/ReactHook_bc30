@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getProductAction,
+  getProductApi,
+} from "../../../../redux/reducers/productReducer";
 
 const arrProduct = [
   {
@@ -60,25 +65,40 @@ const arrProduct = [
 ];
 
 export default function Home() {
-  const [arrProduct, setArrProduct] = useState([]);
+  // const [arrProduct, setArrProduct] = useState([]);
+  // sử dụng useSelector để lấy dữ liệu từ API về
+
+  const { arrProduct } = useSelector((state) => state.productReducer);
+  
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // call api
-  const getAllProductApi = async () => {
-    try {
-      const result = await axios({
-        url: "https://shop.cyberlearn.vn/api/Product",
-        method: "GET",
-      });
-      // sau khi lấy dữ liệu từ api => setState cho arrProduct
-      setArrProduct(result.data.content);
-    } catch (err) {
-      console.log(err);
-    }
+  const getAllProductApi = () => {
+    const actionThunk = getProductApi();
+    dispatch(actionThunk);
   };
-  useEffect(() => {
-    getAllProductApi();
-  }, []);
+  // sau khi lấy dữ liệu từ api => setState cho arrProduct
+  // setArrProduct(result.data.content);
+
+  // Dạng 1: aciton là 1 object
+  // có dạng type, payload
+  // dạng 2: action là callback function
+  /**
+             action = (dispatch2) =>{
+            call api a
+            call api b
+            action = {
+              type:
+              payload:
+            }
+            dispatch2
+             }
+             */
+useEffect(() => {
+  getAllProductApi();
+}, []);
+
 
   const renderProduct = () => {
     return arrProduct.map((item, index) => {

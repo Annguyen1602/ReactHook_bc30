@@ -22,12 +22,20 @@ import DemoUseRoute from "./pages/HookDemo/CustomHook/DemoUseRoute";
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import AntdDemo from "./pages/AntdDemo/AntdDemo";
 import './assets/scss/style.scss'
+import Login from "./pages/Login/Login";
+import { createBrowserHistory } from "history";
+import { unstable_HistoryRouter as HistoryRouter} from "react-router-dom";
+import Profile from "./pages/Profile/Profile";
+
+
+// cấu hình history chuyển hướng không cần hook navigate
+export const history = createBrowserHistory({window})
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HistoryRouter history={history}>
       <Routes>
         <Route path="" element={<App />}>
           <Route index element={<Home />}></Route>
@@ -35,6 +43,7 @@ root.render(
             <Route path=":id" element={<Detail />}></Route>
           </Route>
           <Route path="search" element={<DemoUseSearchParams />}></Route>
+
           <Route path="usestate" element={<UseStateDemo />}></Route>
           <Route path="usestate" element={<UseStateDemo />}></Route>
           <Route path="demouseroute" element={<DemoUseRoute />}></Route>
@@ -45,10 +54,13 @@ root.render(
           <Route path="reduxfacebookapp" element={<DemoFaceBookApp />}></Route>
           <Route path="logindemo" element={<LoginDemo />}></Route>
           <Route path="antd" element={<AntdDemo />}></Route>
+          <Route path="login" element={<Login />}></Route>
+          <Route path="profile" element={<Profile />}></Route>
+
 
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   </Provider>
 );
 
